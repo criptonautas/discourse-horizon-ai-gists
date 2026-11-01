@@ -25,16 +25,11 @@ RSpec.describe "Screenshots" do
     upload_theme_component(parent_theme_id: horizon.id)
 
     # A sample gist, so the layout can be shown without an LLM behind discourse-ai.
-    TopicListItemSerializer.class_eval do
-      attributes :ai_topic_gist
-
-      def ai_topic_gist
-        GISTS[object.title]
-      end
-
-      def include_ai_topic_gist?
-        ai_topic_gist.present?
-      end
+    allow_any_instance_of(TopicListItemSerializer).to receive(:ai_topic_gist) do |serializer|
+      GISTS[serializer.object.title]
+    end
+    allow_any_instance_of(TopicListItemSerializer).to receive(:include_ai_topic_gist?) do |serializer|
+      GISTS.key?(serializer.object.title)
     end
 
     [*GISTS.keys, "What changed in the last soft fork"].each do |title|
