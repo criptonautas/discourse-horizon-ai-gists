@@ -48,3 +48,7 @@ pnpm install && pnpm lint
 
 CI runs lint, the QUnit tests in `test/` and the core features spec. Lint and tests run
 without Horizon, so also install the component on a Horizon site and look at the page.
+
+Screenshots in `docs/screenshots/` come from `spec/system/screenshots_spec.rb` via
+Actions → Screenshots. That spec serializes a sample gist, so it shows the layout, not
+real discourse-ai output.

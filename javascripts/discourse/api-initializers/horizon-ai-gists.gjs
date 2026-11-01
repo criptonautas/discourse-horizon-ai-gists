@@ -21,6 +21,7 @@ import { apiInitializer } from "discourse/lib/api";
 //
 // Plain text, kept escaped: it is LLM output. aria-hidden because the outlet sits inside
 // Horizon's role="heading" title, whose accessible name would otherwise swallow the gist.
+// Screen readers get the excerpt instead, which the stylesheet only hides visually.
 
 // Category ids as strings: compared both to path segments and to topic.category_id.
 // Client-side only — discourse-ai has no per-category scoping, so the gist is still

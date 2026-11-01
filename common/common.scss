@@ -10,8 +10,15 @@
 // `.--high-context .hc-topic-card .topic-excerpt { display: -webkit-box }` at (0,3,0),
 // which our previous selector tied and lost to on source order. This reaches (0,4,0)
 // and wins outright, without an !important.
+// Visually hidden, not display: none: the gist is aria-hidden (see the initializer), so
+// the excerpt is what screen readers get.
 .--high-context .hc-topic-card__content:has(.horizon-ai-gist) .topic-excerpt {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 // The outlet sits inside .hc-topic-card__title, so the gist inherits the title's bold
@@ -22,14 +29,14 @@
 // gist instead of inline after the title). Flex-wrap lets badges keep flowing beside the
 // title link while the gist gets its own full-width row. The existing margin-top stays
 // as the gap between the title line and the gist.
-.hc-topic-card__title {
+.hc-topic-card__title:has(.horizon-ai-gist) {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-}
 
-.hc-topic-card__title .topic-post-badges {
-  order: 1;
+  .topic-post-badges {
+    order: 1;
+  }
 }
 
 .horizon-ai-gist {

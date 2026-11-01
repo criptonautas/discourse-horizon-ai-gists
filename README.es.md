@@ -7,6 +7,10 @@ Mantenido por Criptonautas. Sin afiliación ni respaldo de Discourse (Civilized 
 Muestra los resúmenes cortos de IA de [discourse-ai](https://meta.discourse.org/t/summarize-gists/340269)
 (gists) en las tarjetas de tema del tema [Horizon](https://meta.discourse.org/t/horizon-theme/360486).
 
+| Escritorio | Móvil |
+|---|---|
+| ![Resúmenes en tarjetas de Horizon, escritorio](docs/screenshots/gists-desktop.png) | ![Resúmenes en tarjetas de Horizon, móvil](docs/screenshots/gists-mobile.png) |
+
 ## Por qué
 
 discourse-ai renderiza los resúmenes en dos outlets del núcleo dentro de la celda del
@@ -36,6 +40,8 @@ componente aporta uno, así que no lo instales junto a otro componente que defin
 
 ## Requisitos
 
+- Discourse 2026.5.0 o posterior.
+
 Los resúmenes solo llegan al navegador cuando discourse-ai permite verlos a quien visita:
 
 - `ai_summarization_enabled` y `ai_summary_gists_enabled` activados.
@@ -63,6 +69,11 @@ fetch("/latest.json").then((r) => r.json()).then((d) =>
   resúmenes ocultos se siguen generando y enviando en la lista de temas.
 - **No se indexa.** Los resúmenes se renderizan en el cliente; los buscadores reciben la
   vista para rastreadores de Discourse, que incluye extractos pero no resúmenes.
+- **Los lectores de pantalla reciben el extracto, no el resumen.** El resumen está dentro
+  del encabezado del título de Horizon, así que se les oculta para mantenerlo breve.
+- **Queda guardada una preferencia.** El componente fija en `table-ai` la preferencia de
+  diseño de discourse-ai de cada navegador, para mostrar los resúmenes por defecto. Quitar
+  el componente no la restablece.
 
 ## Instalación
 

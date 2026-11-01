@@ -5,6 +5,7 @@
   "about_url": "https://github.com/somos-criptonautas/discourse-horizon-ai-gists",
   "license_url": "https://github.com/somos-criptonautas/discourse-horizon-ai-gists/blob/main/LICENSE",
   "theme_version": "0.1.0",
+  "minimum_discourse_version": "2026.5.0",
   "assets": {},
   "modifiers": {}
 }

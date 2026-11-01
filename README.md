@@ -8,6 +8,10 @@ Shows [discourse-ai](https://meta.discourse.org/t/summarize-gists/340269) topic 
 (short AI summaries) on the [Horizon](https://meta.discourse.org/t/horizon-theme/360486)
 theme's topic cards.
 
+| Desktop | Mobile |
+|---|---|
+| ![Gists on Horizon cards, desktop](docs/screenshots/gists-desktop.png) | ![Gists on Horizon cards, mobile](docs/screenshots/gists-mobile.png) |
+
 ## Why
 
 discourse-ai renders gists into two core outlets inside the topic cell. Horizon's
@@ -36,6 +40,8 @@ component provides one — so don't install it alongside another component that 
 
 ## Requirements
 
+- Discourse 2026.5.0 or later.
+
 Gists only reach the browser when discourse-ai lets the viewer see them:
 
 - `ai_summarization_enabled` and `ai_summary_gists_enabled` on.
@@ -61,6 +67,10 @@ fetch("/latest.json").then((r) => r.json()).then((d) =>
   still generated and still sent in the topic list payload.
 - **Not indexed.** Gists render client-side; search engines get Discourse's crawler view,
   which has excerpts but no gists.
+- **Screen readers get the excerpt, not the gist.** The gist sits inside Horizon's title
+  heading, so it is hidden from them to keep the heading short.
+- **A stored preference stays.** The component sets each browser's discourse-ai layout
+  preference to `table-ai` so gists show by default. Removing the component doesn't reset it.
 
 ## Install
 
