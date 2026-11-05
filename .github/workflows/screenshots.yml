@@ -7,4 +7,4 @@ permissions:
 
 jobs:
   screenshots:
-    uses: somos-criptonautas/actions/.github/workflows/theme-screenshots.yml@main
+    uses: criptonautas/actions/.github/workflows/theme-screenshots.yml@main
